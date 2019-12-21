@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/tiny")
+@RequestMapping("/short")
 public class UrlRedirectController {
 
     @Autowired
@@ -19,7 +19,7 @@ public class UrlRedirectController {
     public ModelAndView redirectToOriginalUrl(@PathVariable("shortenStr") String shortenStr) {
         return shortenUrlServiceurlService.getShortenUrl(shortenStr)
                 .map(shortenUrl -> new ModelAndView("redirect:" + shortenUrl.getOriginalUrl()))
-                .orElseGet(() -> new ModelAndView("tiny_not_found"));
+                .orElseGet(() -> new ModelAndView("url_not_found"));
     }
 
 }
